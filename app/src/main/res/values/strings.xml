@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">My Application</string>
+
+  <string name="nav_open">Open</string>
+  <string name="nav_close">Close</string>
+  <string name="data_kosong">data_kosong</string>
+  <string name="inactive">inactive</string>
+  <string name="omega_jogja">Omega - Jogja</string>
+  <string name="online_booking_enable">Online Booking Enable</string>
+  <string name="Omage">Omega</string>
+  <string name="company_and_locatio"><![CDATA[Company & Locations]]></string>
+</resources>
