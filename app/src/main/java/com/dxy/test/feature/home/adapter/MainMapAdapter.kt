@@ -20,14 +20,14 @@ class MainMapAdapter  : RecyclerView.Adapter<MainMapAdapter.ViewHolder>(){
     RecyclerView.ViewHolder(binding.root) {
     fun bind(data: MapModels) {
       with(binding) {
-        tvJudul.text = "${R.string.Omage} - ${data.name}"
+        tvJudul.text = "${binding.root.context.getString(R.string.Omage)} - ${data.name}"
         if (data.checked_visibility) {
           tvActive.visibility =  View.VISIBLE
           tvInactive.visibility = View.GONE
           tvActive.text = binding.root.context.getString(R.string.online_booking_enable)
         }else{
-          tvActive.visibility =  View.VISIBLE
-          tvInactive.visibility = View.GONE
+          tvActive.visibility =  View.GONE
+          tvInactive.visibility = View.VISIBLE
           tvInactive.text = binding.root.context.getString(R.string.inactive)
         }
       }
@@ -40,9 +40,9 @@ class MainMapAdapter  : RecyclerView.Adapter<MainMapAdapter.ViewHolder>(){
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     if (position % 2 ==0){
-      holder.itemView.rootView.setBackgroundResource(R.color.gray)
-    }else {
       holder.itemView.rootView.setBackgroundResource(R.color.white)
+    }else {
+      holder.itemView.rootView.setBackgroundResource(R.color.gray)
     }
     holder.bind(list[position])
   }

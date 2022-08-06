@@ -26,6 +26,7 @@ class InactiveFragment : Fragment(){
   ): View? {
     binding = FragmentStatusBinding.inflate(inflater, container, false)
 
+    mainAdapter = MainMapAdapter()
     setData()
     initRecyclerview()
 

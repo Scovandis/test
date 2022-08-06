@@ -110,6 +110,7 @@ dependencies {
     
     //paging
     implementation 'androidx.paging:paging-runtime:3.0.0-beta01'
+    implementation 'androidx.paging:paging-runtime-ktx:3.0.0-beta01'
 
     //sdp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

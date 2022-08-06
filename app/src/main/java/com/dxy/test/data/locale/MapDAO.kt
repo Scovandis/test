@@ -27,4 +27,13 @@ interface MapDAO {
 
   @Query("SELECT * FROM map_models ORDER BY model_id DESC")
   fun getPagingSource(): PagingSource<Int, MapModels>
+
+  @Query("SELECT * FROM map_models ORDER BY model_id ASC LIMIT :limit OFFSET :offset")
+  suspend fun getPagedList(limit: Int, offset: Int): List<MapModels>
+
+  @Query("SELECT * FROM map_models ORDER BY model_id ASC LIMIT :limit OFFSET :offset")
+  fun getPagedListES(limit: Int, offset: Int): LiveData<List<MapModels>>
+
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun insert(item: MapModels): Long
 }

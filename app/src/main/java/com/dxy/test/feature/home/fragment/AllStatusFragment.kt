@@ -1,5 +1,6 @@
 package com.dxy.test.feature.home.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,15 +11,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dxy.test.data.locale.MapModels
 import com.dxy.test.databinding.FragmentStatusBinding
 import com.dxy.test.feature.home.MainAdapter
+import com.dxy.test.feature.home.MainLoadStateAdapter
 import com.dxy.test.feature.home.MainViewModels
 import com.dxy.test.feature.home.adapter.MainMapAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -32,7 +38,6 @@ class AllStatusFragment : Fragment(){
   lateinit var binding: FragmentStatusBinding
   lateinit var mAdapter: MainAdapter
 
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -42,17 +47,31 @@ class AllStatusFragment : Fragment(){
 
 //    setData()
 //    initRecyclerview()
-    initRecyclerView()
-    initViewModel()
+//    initRecyclerView()
+//    initViewModel()
+//    val adapter = MainAdapter()
+    mAdapter = MainAdapter()
 
+    binding.rvContent.adapter = mAdapter.withLoadStateFooter(
+      MainLoadStateAdapter()
+    )
+
+    lifecycleScope.launch {
+      viewModels.data.collectLatest {
+        mAdapter.submitData(it)
+      }
+    }
+
+    viewModels.insertMap()
+    initRecyclerView()
     return binding.root
   }
+
   private fun initRecyclerView() {
     binding.rvContent.apply {
       layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
       val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
       addItemDecoration(decoration)
-      mAdapter = MainAdapter()
       adapter = mAdapter
     }
   }
@@ -64,7 +83,7 @@ class AllStatusFragment : Fragment(){
         mAdapter.submitData(it)
       }
     }
-    viewModels.insertMap()
+//    viewModels.insertMap()
   }
   private fun setData(){
     viewModels.listLaporan.observe(viewLifecycleOwner, Observer {
@@ -96,6 +115,12 @@ class AllStatusFragment : Fragment(){
 
   override fun onResume() {
     super.onResume()
-    binding.shimmer1.stopShimmer()
+    binding.shimmer1.startShimmer()
+    lifecycleScope.launch {
+      viewModels.data.collectLatest {
+        mAdapter.submitData(it)
+      }
+    }
+
   }
 }

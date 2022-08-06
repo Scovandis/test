@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dxy.test.data.locale.MapModels
 import com.dxy.test.databinding.FragmentStatusBinding
+import com.dxy.test.feature.home.MainAdapter
 import com.dxy.test.feature.home.MainViewModels
 import com.dxy.test.feature.home.adapter.MainMapAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,7 @@ class ActiveFragment : Fragment(){
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentStatusBinding.inflate(inflater, container, false)
-
+    mainAdapter = MainMapAdapter()
     setData()
     initRecyclerview()
 
