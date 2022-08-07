@@ -9,4 +9,18 @@
   <string name="online_booking_enable">Online Booking Enable</string>
   <string name="Omage">Omega</string>
   <string name="company_and_locatio"><![CDATA[Company & Locations]]></string>
+  <string name="status">Status</string>
+  <string name="active">Active</string>
+  <string name="create">create</string>
+  <string name="nama">name</string>
+  <string name="address">Address</string>
+  <string name="city">city</string>
+  <string name="zip_code">zip code</string>
+  <string name="simpan">simpan</string>
+  <string name="jumlah_tidak_boleh_lebih_dari_9">jumlah tidak boleh lebih dari 9</string>
+  <string name="nominal_tidak_boleh_diawali_nilai_negative">tidak boleh diawali nilai negative</string>
+  <string name="tidak_boleh_diawali_dengan_0">tidak boleh diawali dengan 0</string>
+  <string name="tidak_boleh_diawali_dengan_nilai_kosong">tidka boleh diawali dengan nilai kosong</string>
+  <string name="masukkan_nilai_dengan_benar">masukkan nilai dengan benar</string>
+  <string name="nama_tidak_boleh_kurang_dari_2_huruf">nama tidak boleh kurang dari 2 huruf</string>
 </resources>

@@ -21,6 +21,7 @@ class MainMapAdapter  : RecyclerView.Adapter<MainMapAdapter.ViewHolder>(){
     fun bind(data: MapModels) {
       with(binding) {
         tvJudul.text = "${binding.root.context.getString(R.string.Omage)} - ${data.name}"
+
         if (data.checked_visibility) {
           tvActive.visibility =  View.VISIBLE
           tvInactive.visibility = View.GONE

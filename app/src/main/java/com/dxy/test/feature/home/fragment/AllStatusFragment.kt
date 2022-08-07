@@ -31,12 +31,12 @@ import kotlinx.coroutines.withContext
 class AllStatusFragment : Fragment(){
   private val TAG = AllStatusFragment::class.java.simpleName
 
-  lateinit var mainAdapter: MainMapAdapter
+  private val mainAdapter: MainMapAdapter by lazy { MainMapAdapter() }
 
 
   private val viewModels  by viewModels<MainViewModels>()
   lateinit var binding: FragmentStatusBinding
-  lateinit var mAdapter: MainAdapter
+  private val mAdapter: MainAdapter by lazy{MainAdapter()}
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -50,19 +50,24 @@ class AllStatusFragment : Fragment(){
 //    initRecyclerView()
 //    initViewModel()
 //    val adapter = MainAdapter()
-    mAdapter = MainAdapter()
+//    mAdapter = MainAdapter()
 
-    binding.rvContent.adapter = mAdapter.withLoadStateFooter(
-      MainLoadStateAdapter()
-    )
+//    binding.rvContent.adapter = mAdapter.withLoadStateFooter(
+//      MainLoadStateAdapter()
+//    )
 
-    lifecycleScope.launch {
-      viewModels.data.collectLatest {
-        mAdapter.submitData(it)
-      }
-    }
-
-    viewModels.insertMap()
+//    lifecycleScope.launch {
+//      viewModels.data.collectLatest {
+//        mAdapter.submitData(it)
+//      }
+//    }
+//    lifecycleScope.launch {
+//      viewModels.getLiveData.observe(viewLifecycleOwner){
+//        mAdapter.submitData(lifecycle,it)
+//      }
+//    }
+    setData()
+//    viewModels.insertMap()
     initRecyclerView()
     return binding.root
   }
@@ -72,7 +77,7 @@ class AllStatusFragment : Fragment(){
       layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
       val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
       addItemDecoration(decoration)
-      adapter = mAdapter
+      adapter = mainAdapter
     }
   }
 
@@ -86,7 +91,7 @@ class AllStatusFragment : Fragment(){
 //    viewModels.insertMap()
   }
   private fun setData(){
-    viewModels.listLaporan.observe(viewLifecycleOwner, Observer {
+    viewModels.listMap.observe(viewLifecycleOwner, Observer {
       binding.shimmer1.stopShimmer()
       binding.shimmer1.visibility = View.GONE
       if (it.isEmpty()){
@@ -116,11 +121,10 @@ class AllStatusFragment : Fragment(){
   override fun onResume() {
     super.onResume()
     binding.shimmer1.startShimmer()
-    lifecycleScope.launch {
-      viewModels.data.collectLatest {
-        mAdapter.submitData(it)
-      }
-    }
-
+//    lifecycleScope.launch {
+//      viewModels.data.collectLatest {
+//        mAdapter.submitData(it)
+//      }
+//    }
   }
 }

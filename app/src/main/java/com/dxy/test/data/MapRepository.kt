@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+
 class MapRepository @Inject constructor(private val mapDAO: MapDAO,private val localeDataSource: MapLocalDataSource): PagingRepo{
   suspend fun addToModels(mapModels: MapModels) = mapDAO.addMap(mapModels)
   fun getMapModels() =mapDAO.getAllMapData()
@@ -32,6 +32,9 @@ class MapRepository @Inject constructor(private val mapDAO: MapDAO,private val l
   }
 
   override fun getPagingMapLiveData(): LiveData<PagingData<MapModels>> =localeDataSource.getMapLiveData()
+  override fun getPagingMapWhere(status: Boolean): LiveData<PagingData<MapModels>> {
+    return localeDataSource.getMapDataWhere(status)
+  }
 
   override fun getPagingMapFlow(): Flow<PagingData<MapModels>> =localeDataSource.getMapFlow()
 

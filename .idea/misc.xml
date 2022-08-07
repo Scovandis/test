@@ -4,13 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/back_select.xml" value="0.1525" />
         <entry key="app/src/main/res/drawable/back_tabs.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/button_selector.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/pick_outline.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/seleced_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/tab_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/tab_background_selected.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/tab_background_unselected.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/tab_bg_normal.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/tab_bg_normal_blue.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/tab_left_selected.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/tabview_bg.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/toggle_widged_background.xml" value="0.1525" />
         <entry key="app/src/main/res/layout/activity_create.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_edit.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/compoud_view.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_status.xml" value="0.1" />
         <entry key="app/src/main/res/layout/load_state_view.xml" value="0.17028985507246377" />

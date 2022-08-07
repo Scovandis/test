@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.dxy.test.data.MapRepositoryImpl
-import com.dxy.test.data.PagingRepo
 import com.dxy.test.data.locale.MapDatabase
 import dagger.Module
 import dagger.Provides

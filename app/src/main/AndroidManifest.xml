@@ -28,7 +28,10 @@
       android:theme="@style/Theme.MyApplication"
       tools:targetApi="31">
     <activity
-        android:name=".CreateActivity"
+        android:name=".feature.edit.EditActivity"
+        android:exported="false" />
+    <activity
+        android:name=".feature.create.CreateActivity"
         android:exported="false" />
     <activity
         android:name=".feature.home.MainActivity"

@@ -14,23 +14,23 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModels @Inject constructor(private val repository: MapRepository, private val dao: MapDAO): ViewModel(){
+class MainViewModels @Inject constructor(private val repository: MapRepository): ViewModel(){
 
-  var listLaporan = repository.getMapModels()
+  var listMap = repository.getMapModels()
 //  val data1 : LiveData<PagedList<MapModels>>
   val getFlow = repository.getPagingMapFlow()
-  val getLiveData = repository.getPagingMapLiveData()
+  val getLiveData = repository.getPagingMapLiveData().cachedIn(viewModelScope)
+  fun getDataWhere(status: Boolean) = repository.getPagingMapWhere(status)
 
-
-  val data = Pager(
-    PagingConfig(
-      pageSize = 20,
-      enablePlaceholders = false,
-      initialLoadSize = 20
-    ),
-  ) {
-    MainPagingSource(dao)
-  }.flow.cachedIn(viewModelScope)
+//  val data = Pager(
+//    PagingConfig(
+//      pageSize = 20,
+//      enablePlaceholders = false,
+//      initialLoadSize = 20
+//    ),
+//  ) {
+//    MainPagingSource(dao)
+//  }.flow.cachedIn(viewModelScope)
 
   fun getDataWhereStatus(status: Boolean): LiveData<List<MapModels>> {
     return repository.getMapWhereStatus(status)

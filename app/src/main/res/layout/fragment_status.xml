@@ -44,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
+        android:visibility="gone"
         app:lottie_rawRes="@raw/empty_fiels" />
     <TextView
         android:id="@+id/tv_is_empty"
@@ -51,6 +52,7 @@
         android:layout_gravity="center"
         android:text="@string/data_kosong"
         android:textSize="@dimen/_20sdp"
+        android:visibility="gone"
         android:gravity="center"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/_8sdp"
